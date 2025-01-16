@@ -6,17 +6,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "./Navbar";
 import { TemplateGallery } from "./TemplateGallery";
-import { useQuery } from "convex/react";
+import { usePaginatedQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
+import { DocumentsTable } from "./DocumentsTable";
+import { useSearchParams } from "@/hooks/use-search-params";
 
 export default function Home() {
-  const documents = useQuery(api.documents.get)
+  const [search] = useSearchParams("search")
+  const {results, status, loadMore} = usePaginatedQuery(api.documents.get, {search}, {initialNumItems: 5})
 
-  if(documents === undefined){
-    return (
-      <p>Loading...</p>
-    )
-  }
+  
   return (
     <div className="flex flex-col min-h-screen">
       <div className="fixed top-0 left-0 right-0 z-10 h-16 bg-white p-4">
@@ -24,10 +23,8 @@ export default function Home() {
       </div>
       <div className="mt-16">
         <TemplateGallery />
-        {documents?.map(doc => (
-          <span key={doc._id}>{doc.title}</span>
-        ))}
+        <DocumentsTable documents={results} status={status} loadMore={loadMore} /> 
       </div>
-    </div>
+    </div> 
   );
 }
