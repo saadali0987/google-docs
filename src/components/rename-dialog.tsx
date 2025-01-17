@@ -70,7 +70,7 @@ export const RenameDialog = ({
               type="button"
               disabled={isUpdating}
               onClick={(e) => {
-                e.stopPropagation;
+                e.stopPropagation();
                 setOpen(false);
               }}
             >

@@ -28,9 +28,7 @@ import {
   ItalicIcon,
   PrinterIcon,
   Redo2Icon,
-  RedoIcon,
   RemoveFormattingIcon,
-  SaveIcon,
   StrikethroughIcon,
   TextIcon,
   TrashIcon,
@@ -39,6 +37,8 @@ import {
 } from "lucide-react";
 import { useEditorStore } from "@/store/use-editor-store";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
+import { Avatars } from "./avatars";
+import { Inbox } from "./Inbox";
 
 export const Navbar = () => {
   const { editor } = useEditorStore();
@@ -274,6 +274,8 @@ export const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-3 pl-6">
+        <Avatars />
+        <Inbox />
         <OrganizationSwitcher
           afterCreateOrganizationUrl="/"
           afterLeaveOrganizationUrl="/"

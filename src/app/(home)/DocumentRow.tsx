@@ -3,18 +3,12 @@ import {SiGoogledocs} from "react-icons/si"
 import { Doc } from '../../../convex/_generated/dataModel'
 import {format} from "date-fns"
 import {
-    Table,
-    TableBody,
-    TableCaption,
     TableCell,
-    TableHead,
-    TableHeader,
     TableRow,
   } from "@/components/ui/table"
  
    
-import { Building2Icon, CircleUserIcon, MoreVertical } from 'lucide-react';
-import { Button } from '@/components/ui/button'
+import { Building2Icon, CircleUserIcon } from 'lucide-react';
 import { DocumentMenu} from './DropdownMenu'
 import { useRouter } from 'next/navigation'
 
